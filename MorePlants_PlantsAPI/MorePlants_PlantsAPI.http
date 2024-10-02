@@ -1,0 +1,6 @@
+@MorePlants_PlantsAPI_HostAddress = http://localhost:5022
+
+GET {{MorePlants_PlantsAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

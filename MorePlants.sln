@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MorePlants_PlantsAPI", "MorePlants_PlantsAPI\MorePlants_PlantsAPI.csproj", "{2C2B3607-FD0C-453B-85AC-F4AFEF99AECF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C2B3607-FD0C-453B-85AC-F4AFEF99AECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2B3607-FD0C-453B-85AC-F4AFEF99AECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2B3607-FD0C-453B-85AC-F4AFEF99AECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2B3607-FD0C-453B-85AC-F4AFEF99AECF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29B188B1-6199-4BEF-873B-41321D25DB35}
+	EndGlobalSection
+EndGlobal

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MorePlants_PlantsAPI.Data;
 using MorePlants_PlantsAPI.Models;
+using MorePlants_PlantsAPI.Models.Dto;
 
 namespace MorePlants_PlantsAPI.Controllers
 {
@@ -11,14 +13,22 @@ namespace MorePlants_PlantsAPI.Controllers
     {
         // 여기에 엔드포인트 메서드를 추가할 수 있습니다.
 
+
+        //[HttpGet]
+        //public IEnumerable<PlantDTO> GetPlants()
+        //{
+        //    return new List<PlantDTO>
+        //    {
+        //        new PlantDTO { Id = 1, Name = "여인초" },
+        //        new PlantDTO { Id = 2, Name = "뱅갈고무나무" }
+        //    };
+        //}
+
+        // PlantsAPIController 내에서 PlantStore 사용
         [HttpGet]
-        public IEnumerable<Plant> GetPlants()
+        public IEnumerable<PlantDTO> GetPlants()
         {
-            return new List<Plant>
-            {
-                new Plant { Id = 1, Name = "여인초" },
-                new Plant { Id = 2, Name = "뱅갈고무나무" }
-            };
+            return PlantStore.PlantList;
         }
     }
 }

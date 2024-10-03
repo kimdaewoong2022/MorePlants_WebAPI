@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
 using MorePlants_PlantsAPI.Data;
 using MorePlants_PlantsAPI.Models;
 using MorePlants_PlantsAPI.Models.Dto;
@@ -111,6 +112,29 @@ namespace MorePlants_PlantsAPI.Controllers
             plant.Size = plantDTO.Size;
             plant.Occupancy = plantDTO.Occupancy;
 
+            return NoContent();
+        }
+
+        //3-10. Http Patch 작업
+        [HttpPatch("{id:int}", Name = "UpdatePartialPlant")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdatePartialPlant(int id, JsonPatchDocument<PlantDTO> patchDTO)
+        {
+            if (patchDTO == null || id == 0)
+            {
+                return BadRequest();
+            }
+            var plant = PlantStore.PlantList.FirstOrDefault(u => u.Id == id);
+            if (plant == null)
+            {
+                return BadRequest();
+            }
+            patchDTO.ApplyTo(plant, ModelState);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             return NoContent();
         }
     }

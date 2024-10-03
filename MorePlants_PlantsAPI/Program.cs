@@ -3,7 +3,14 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 //3-9. Http Patch Nuget ÆĞÅ°Áö ¼³Ä¡
-builder.Services.AddControllers().AddNewtonsoftJson();
+//builder.Services.AddControllers().AddNewtonsoftJson();
+
+//3-12. ÄÜÅÙÃ÷ Çù»ó (Content Negotiations)
+builder.Services.AddControllers(option =>
+{
+    //ÄÜÅÙÃ÷ Çù»ó(Content Negotiations) :: XML ÇüÅÂ·Î º¯È¯ 
+    //option.ReturnHttpNotAcceptable = true;
+}).AddNewtonsoftJson().AddXmlDataContractSerializerFormatters();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

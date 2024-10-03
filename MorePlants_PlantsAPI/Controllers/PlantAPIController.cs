@@ -41,5 +41,29 @@ namespace MorePlants_PlantsAPI.Controllers
             
             return Ok(plant);
         }
+
+        // 3-3. HttpPOST 작업
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public ActionResult<PlantDTO> CreatePlant([FromBody] PlantDTO plantDTO)
+        {
+            if (plantDTO == null)
+            {
+                return BadRequest();
+            }
+
+            if (plantDTO.Id > 0)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+
+            // ID 할당 및 PlantList에 추가 로직...
+            plantDTO.Id = PlantStore.PlantList.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
+            PlantStore.PlantList.Add(plantDTO);
+
+            return Ok(plantDTO);
+        }
     }
 }

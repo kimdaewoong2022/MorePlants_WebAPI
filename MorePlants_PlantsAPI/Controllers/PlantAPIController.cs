@@ -30,5 +30,12 @@ namespace MorePlants_PlantsAPI.Controllers
         {
             return PlantStore.PlantList;
         }
+
+        // 2-5. 개별 Plant 가져오기
+        [HttpGet("{id:int}")]
+        public PlantDTO GetPlant(int id)
+        {
+            return PlantStore.PlantList.FirstOrDefault(v => v.Id == id);
+        }
     }
 }

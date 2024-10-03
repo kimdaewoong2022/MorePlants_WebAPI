@@ -13,29 +13,29 @@ namespace MorePlants_PlantsAPI.Controllers
     {
         // 여기에 엔드포인트 메서드를 추가할 수 있습니다.
 
-
-        //[HttpGet]
-        //public IEnumerable<PlantDTO> GetPlants()
-        //{
-        //    return new List<PlantDTO>
-        //    {
-        //        new PlantDTO { Id = 1, Name = "여인초" },
-        //        new PlantDTO { Id = 2, Name = "뱅갈고무나무" }
-        //    };
-        //}
-
-        // PlantsAPIController 내에서 PlantStore 사용
+        // 3-1. 엔드포인트에서의 상태 코드
         [HttpGet]
-        public IEnumerable<PlantDTO> GetPlants()
+        public ActionResult<IEnumerable<PlantDTO>> GetPlants()
         {
-            return PlantStore.PlantList;
+            return Ok(PlantStore.PlantList);
         }
 
-        // 2-5. 개별 Plant 가져오기
-        [HttpGet("{id:int}")]
-        public PlantDTO GetPlant(int id)
+        [HttpGet("id:int")]
+        public ActionResult<PlantDTO> GetPlant(int id)
         {
-            return PlantStore.PlantList.FirstOrDefault(v => v.Id == id);
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+
+            var plant = PlantStore.PlantList.FirstOrDefault(u => u.Id == id);
+
+            if (plant == null)
+            {
+                return NotFound();
+            }
+            
+            return Ok(plant);
         }
     }
 }

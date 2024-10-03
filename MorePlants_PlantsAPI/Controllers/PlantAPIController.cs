@@ -75,5 +75,25 @@ namespace MorePlants_PlantsAPI.Controllers
             //return Ok(plantDTO);
             return CreatedAtRoute("GetPlant", new { id = plantDTO.Id }, plantDTO);
         }
+
+        //3-7. Http Delete 작업
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [HttpDelete("{id:int}", Name = "DeletePlant")]
+        public IActionResult DeletePlant(int id)
+        {
+            if (id == 0)
+            {
+                return BadRequest();
+            }
+            var plant = PlantStore.PlantList.FirstOrDefault(u => u.Id == id);
+            if (plant == null)
+            {
+                return NotFound();
+            }
+            PlantStore.PlantList.Remove(plant);
+            return NoContent();
+        }
     }
 }

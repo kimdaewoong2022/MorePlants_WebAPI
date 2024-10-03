@@ -63,7 +63,9 @@ namespace MorePlants_PlantsAPI.Controllers
             plantDTO.Id = PlantStore.PlantList.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
             PlantStore.PlantList.Add(plantDTO);
 
-            return Ok(plantDTO);
+            //3-4. CreatedAtRoute
+            //return Ok(plantDTO);
+            return CreatedAtRoute("GetPlant", new { id = plantDTO.Id }, plantDTO);
         }
     }
 }

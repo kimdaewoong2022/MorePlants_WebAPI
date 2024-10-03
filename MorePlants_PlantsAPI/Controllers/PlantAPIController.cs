@@ -20,6 +20,10 @@ namespace MorePlants_PlantsAPI.Controllers
             return Ok(PlantStore.PlantList);
         }
 
+        // 3-2. 응답 타입
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("id:int")]
         public ActionResult<PlantDTO> GetPlant(int id)
         {

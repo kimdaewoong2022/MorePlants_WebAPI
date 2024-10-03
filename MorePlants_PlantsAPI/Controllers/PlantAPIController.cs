@@ -60,6 +60,13 @@ namespace MorePlants_PlantsAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
 
+            //3-6. 사용자 정의ModelState 유효성 검사
+            if (PlantStore.PlantList.FirstOrDefault(u => u.Name.ToLower() == plantDTO.Name.ToLower()) != null)
+            {
+                ModelState.AddModelError("CustomError", "같은 이름의 식물이 이미 존재합니다!");
+                return BadRequest(ModelState);
+            }
+
             // ID 할당 및 PlantList에 추가 로직...
             plantDTO.Id = PlantStore.PlantList.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
             PlantStore.PlantList.Add(plantDTO);

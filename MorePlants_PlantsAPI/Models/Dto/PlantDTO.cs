@@ -10,5 +10,9 @@ namespace MorePlants_PlantsAPI.Models.Dto
         [Required]
         [MaxLength(30)]
         public string Name { get; set; }
+
+        public int Size { get; set; }
+        public string Occupancy { get; set; }
+        
     }
 }

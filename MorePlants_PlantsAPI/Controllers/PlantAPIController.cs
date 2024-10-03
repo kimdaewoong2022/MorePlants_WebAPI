@@ -95,5 +95,23 @@ namespace MorePlants_PlantsAPI.Controllers
             PlantStore.PlantList.Remove(plant);
             return NoContent();
         }
+
+        //3-8. Http PUT 작업
+        [HttpPut("{id:int}", Name = "UpdatePlant")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdatePlant(int id, [FromBody] PlantDTO plantDTO)
+        {
+            if (plantDTO == null || id != plantDTO.Id)
+            {
+                return BadRequest();
+            }
+            var plant = PlantStore.PlantList.FirstOrDefault(u => u.Id == id);
+            plant.Name = plantDTO.Name;
+            plant.Size = plantDTO.Size;
+            plant.Occupancy = plantDTO.Occupancy;
+
+            return NoContent();
+        }
     }
 }

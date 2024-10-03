@@ -49,10 +49,11 @@ namespace MorePlants_PlantsAPI.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ActionResult<PlantDTO> CreatePlant([FromBody] PlantDTO plantDTO)
         {
-            if (plantDTO == null)
-            {
-                return BadRequest();
-            }
+            //3-5. ModelState 유효성 검사
+            //if (plantDTO == null)
+            //{
+            //    return BadRequest();
+            //}
 
             if (plantDTO.Id > 0)
             {

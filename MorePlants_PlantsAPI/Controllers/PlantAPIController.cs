@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.JsonPatch;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using MorePlants_PlantsAPI.Data;
 using MorePlants_PlantsAPI.Models;
@@ -15,6 +16,11 @@ namespace MorePlants_PlantsAPI.Controllers
         // 여기에 엔드포인트 메서드를 추가할 수 있습니다.
 
         private readonly ApplicationDbContext _db;
+
+        public PlantAPIController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
 
         // 3-1. 엔드포인트에서의 상태 코드
         [HttpGet]

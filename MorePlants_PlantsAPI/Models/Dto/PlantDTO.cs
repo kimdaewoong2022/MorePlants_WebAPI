@@ -11,8 +11,14 @@ namespace MorePlants_PlantsAPI.Models.Dto
         [MaxLength(30)]
         public string Name { get; set; }
 
+        public string Details { get; set; }
+
+        [Required]
+        public double Rate { get; set; }
+
+        public int Occupancy { get; set; }
         public int Size { get; set; }
-        public string Occupancy { get; set; }
-        
+        public string ImageUrl { get; set; }
+
     }
 }

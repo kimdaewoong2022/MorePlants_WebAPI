@@ -1,7 +1,12 @@
-﻿namespace MorePlants_PlantsAPI.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace MorePlants_PlantsAPI.Models
 {
     public class Plant
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
 
